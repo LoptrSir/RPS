@@ -4,7 +4,7 @@ let compWins = 0;
 let person;
 let computer;
 
-function playGame(peep, comp) {
+function playGame(person, computer) {
     roundCount++;
 	person = prompt(
 		'What will it be? Rock, Paper, or Scissors.'
@@ -25,7 +25,7 @@ function playGame(peep, comp) {
 	}
 	console.log(person, computer); // show selections
 	
-	if (peep === comp) {
+	if (person === computer) {
 		console.log(
 			'Tie',
 			roundCount,
@@ -34,10 +34,10 @@ function playGame(peep, comp) {
 		);
 		return 'Tie';
 	} else if (
-		(peep === 'ROCK' &&
-			comp === 'SCISSORS') ||
-		(peep === 'PAPER' && comp === 'ROCK') ||
-		(peep === 'SCISSORS' && comp === 'PAPER')
+		(person === 'ROCK' &&
+			computer === 'SCISSORS') ||
+		(person === 'PAPER' && computer === 'ROCK') ||
+		(person === 'SCISSORS' && computer === 'PAPER')
 	) {
 		humanWins++;
 		console.log(
@@ -60,11 +60,15 @@ function playGame(peep, comp) {
 }
 
 function game() {
-	for (let i = 1; i <= 5; i++)
-		if (humanWins === 5 || compWins === 5) {
-			console.log('game over');
+	for (let i = 1; i <= 20; i++)
+		if (humanWins === 5) {
+		console.log('game over. Human wins!');
 			return 'game over';
-		} else {
+		} 
+		else if (compWins === 5) {
+			console.log('game over. Skynet wins!')
+		}
+		else {
 			playGame(person, computer);
 		}
 	//console.log (humanWins, compWins)
