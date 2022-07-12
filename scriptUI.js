@@ -1,29 +1,46 @@
 let roundCount = 0;
 let humanWins = 0;
 let computerWins = 0;
-let person;
+//let person = playerSelection();
 let computer;
+
 // branch ui1
-//const btn = document.querySelector("#btn");
+const text = document.createElement("div");
+text.classList.add("text");
+text.textContent =
+  "What will it be? Rock, Paper, or Scissors?  Click a button to decide.";
+document.body.appendChild(text);
 const brock = document.createElement("button");
 brock.classList.add("brock");
 brock.innerText = "Rock";
 document.body.appendChild(brock);
 const bpaper = document.createElement("button");
-bpaper.classList.add('bpaper');
-bpaper.innerText = 'Paper';
+bpaper.classList.add("bpaper");
+bpaper.innerText = "Paper";
 document.body.appendChild(bpaper);
 const bscissor = document.createElement("button");
-bscissor.classList.add('bscissor');
-bscissor.innerText = 'Scissors';
+bscissor.classList.add("bscissor");
+bscissor.innerText = "Scissors";
 document.body.appendChild(bscissor);
 
-function playGame(person, computer) {
+//
+
+function playerSelection(){
+  const btns = document.querySelectorAll(".brock, .bpaper, .bscissor");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      console.log(person, "you clicked " + this.innerText.toUpperCase());
+      person = this.innerText.toUpperCase();
+          });
+  });
+  console.log (btns);
+}
+
+  //
+ function playGame(person, computer) {
   roundCount++;
-  person = prompt("What will it be? Rock, Paper, or Scissors.");
-  person = person.toUpperCase();
   computer = [Math.floor(Math.random() * 3) + 1];
-  //console.log(computer)
+  console.log(computer);
   if (computer == 1) {
     computer = "ROCK";
   } else if (computer == 2) {
@@ -59,7 +76,7 @@ function playGame(person, computer) {
 }
 
 //function game() {
-//	for (let i = 1; i <= 5; i++)
+//	for (let i = 1; i <= 25; i++)
 //		if (humanWins === 5 || computerWins === 5) {
 //			console.log('game over');
 //			return 'game over';
@@ -71,4 +88,13 @@ function playGame(person, computer) {
 //}
 
 //game();
+let person = playerSelection();
+playerSelection();
 playGame();
+
+// why is this happening?
+// playerSelection needs to be called 2x to show player selection first click but still calls previous result too.
+//playGame is not calling for playerSelection first and uses undefined for result of round
+// NodeList is called 2x = because PlayerSelection is called 2x.
+
+//That's right. You also need to pass arguments to it since I saw you didn't pass any
