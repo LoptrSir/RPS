@@ -1,7 +1,7 @@
 let roundCount = 0;
 let humanWins = 0;
 let computerWins = 0;
-//let person = playerSelection();
+let person;
 let computer;
 
 // branch ui1
@@ -24,20 +24,23 @@ bscissor.innerText = "Scissors";
 document.body.appendChild(bscissor);
 
 //
-
-function playerSelection(){
+//function playerSelection(player)
+//function playerSelection() {
   const btns = document.querySelectorAll(".brock, .bpaper, .bscissor");
   btns.forEach((btn) => {
+    //btn.addEventListener("click", function (person)
     btn.addEventListener("click", function () {
-      console.log(person, "you clicked " + this.innerText.toUpperCase());
       person = this.innerText.toUpperCase();
-          });
+      console.log(person, "you clicked " + this.innerText.toUpperCase());
+      //playGame(person);
+      playGame(person);
+    });
   });
-  console.log (btns);
-}
-
-  //
- function playGame(person, computer) {
+  console.log(btns);
+//}
+//const person = playerSelection();
+//
+function playGame(person, computer) {
   roundCount++;
   computer = [Math.floor(Math.random() * 3) + 1];
   console.log(computer);
@@ -54,7 +57,7 @@ function playerSelection(){
 
   if (person === computer) {
     console.log("Tie", roundCount, humanWins, computerWins);
-    return "Tie";
+    //return "Tie";
   } else if (
     (person === "ROCK" && computer === "SCISSORS") ||
     (person === "PAPER" && computer === "ROCK") ||
@@ -62,7 +65,7 @@ function playerSelection(){
   ) {
     humanWins++;
     console.log("Human wins this round", roundCount, humanWins, computerWins);
-    return "Human wins this round";
+    //return "Human wins this round";
   } else {
     computerWins++;
     console.log(
@@ -71,7 +74,7 @@ function playerSelection(){
       +humanWins,
       +computerWins
     );
-    return "Skynet wins this round";
+    //return "Skynet wins this round";
   }
 }
 
@@ -88,9 +91,9 @@ function playerSelection(){
 //}
 
 //game();
-let person = playerSelection();
-playerSelection();
-playGame();
+//let person = playerSelection();
+//playerSelection();
+//playGame();
 
 // why is this happening?
 // playerSelection needs to be called 2x to show player selection first click but still calls previous result too.
