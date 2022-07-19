@@ -77,27 +77,3 @@ function playGame(person, computer) {
     //return "Skynet wins this round";
   }
 }
-
-//function game() {
-//	for (let i = 1; i <= 25; i++)
-//		if (humanWins === 5 || computerWins === 5) {
-//			console.log('game over');
-//			return 'game over';
-//		} else {
-//			playGame(person, computer);
-//		}
-//console.log (humanWins, computerWins)
-//	return humanWins, computerWins;
-//}
-
-//game();
-//let person = playerSelection();
-//playerSelection();
-//playGame();
-
-// why is this happening?
-// playerSelection needs to be called 2x to show player selection first click but still calls previous result too.
-//playGame is not calling for playerSelection first and uses undefined for result of round
-// NodeList is called 2x = because PlayerSelection is called 2x.
-
-//That's right. You also need to pass arguments to it since I saw you didn't pass any
